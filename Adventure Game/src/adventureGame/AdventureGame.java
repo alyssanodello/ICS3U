@@ -240,6 +240,7 @@ public class AdventureGame {
 									c.println(items[i]);
 								}
 							}
+							
 						} else {
 							c.clear();
 							try {
