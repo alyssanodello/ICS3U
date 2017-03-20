@@ -230,7 +230,6 @@ public class AdventureGame {
 								for (int i = 0; i < items.length; i++) {
 									c.println(items[i]);
 								}
-
 							} else {
 								c.drawImage(outside, 0, 0, null);
 								c.println(
