@@ -44,6 +44,12 @@ public class IsPrime {
 		}
 
 	}
+	/**
+	 * sees if the two numbers are divisible with no remainder and returns the true or false
+	 * @param a
+	 * @param b
+	 * @return a boolean value
+	 */
 	private static boolean isDivisible(double a, int b) {
 		if(a%b == 0){
 			return true;
