@@ -20,7 +20,7 @@ public class LargestNumber {
 		}
 		
 		int biggestNumberInArray = largestNum(numbers);
-		System.out.println("The grestest number you enetered was "+ biggestNumberInArray);
+		System.out.println("The largest number you entered was "+ biggestNumberInArray);
 
 	}
 	/**

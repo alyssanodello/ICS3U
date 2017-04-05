@@ -30,10 +30,23 @@ public class Gcf {
 		int big = Math.max(a, b);
 		int small = Math.min(a, b);
 		int counter = small;
-		while(big%counter != 0 || small%counter != 0){
+		while(isDivisble (big, counter)== false || isDivisble(small, counter)== false){
 			counter --;
 		}
 		return counter;
 			}
+	/**
+	 * sees value a and value b to test if they perfectly divide with no remainder
+	 * @param a
+	 * @param b
+	 * @return returns true or false if there is no remainders in the division
+	 */
+	private static boolean isDivisble(int a, int b) {
+		if(a%b == 0){
+		return true;	
+		}
+		return false;
+	}
+	
 
 }
