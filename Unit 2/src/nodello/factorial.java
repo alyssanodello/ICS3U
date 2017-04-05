@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class factorial {
 	static Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {
-		System.out.println("Please enter a value");
+		System.out.println("Please enter a value with no decimals");
 		int num = sc.nextInt();
 		System.out.println("The factorial is " +factorial(num));
 	}

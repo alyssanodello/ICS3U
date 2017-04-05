@@ -13,9 +13,9 @@ public class Gcf {
 	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Please enter a value");
+		System.out.println("Please enter a value with no decimals");
 		int a = sc.nextInt();
-		System.out.println("Please enter a another value");
+		System.out.println("Please enter a another value with no decimals");
 		int b = sc.nextInt();
 		System.out.println("The greatest common factor is " +gcf(a,b));
 		

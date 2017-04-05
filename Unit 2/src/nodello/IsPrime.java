@@ -13,7 +13,7 @@ public class IsPrime {
 	static Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {
 
-		System.out.println("Please enter a value to find out if it is a prime number");
+		System.out.println("Please enter a whole number to find out if it is a prime number");
 		double a = sc.nextInt();
 
 		if (isPrime(a)){
