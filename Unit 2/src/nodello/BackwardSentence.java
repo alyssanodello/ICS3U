@@ -1,3 +1,9 @@
+/**
+ * BackwardsSentence
+ * Prints a sentence but prints the letters in each word backwards
+ * Alyssa Nodello
+ * April 19 2017
+ */
 package nodello;
 
 import java.util.Scanner;

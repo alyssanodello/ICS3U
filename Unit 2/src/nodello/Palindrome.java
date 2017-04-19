@@ -1,3 +1,9 @@
+/**
+ * Palindrome
+ * Alyssa Nodello
+ * April 13 2017
+ * checks to see if a word is a palindrome, which means that the first and last letter are the same, the second and second last letter are the same etc.
+ */
 package nodello;
 
 import java.util.Scanner;
@@ -17,6 +23,11 @@ public class Palindrome {
 		}
 
 	}
+	/**
+	 * using a loop the counter value is the char at value. there is a forward and backward counter to check the first vs last letter. One is for words with an even amount of letters and one is for an odd number
+	 * @param word
+	 * @return a true or false value whether or not the word is a palindrome
+	 */
 	public static boolean isPalindrome(String word){
 		boolean palindrome = false;
 		if(word.length()%2 == 1){
