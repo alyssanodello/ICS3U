@@ -3,12 +3,13 @@ package kemp;
 import java.util.Scanner;
 
 /**
- * 
- * @author Alyssa April 24, 2017
+ * Game of Life
+ * @author Alyssa 
+ * April 24, 2017
  */
 public class Life {
 	/**
-	 * 
+	 * Main method that holds all the code
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -19,18 +20,18 @@ public class Life {
 		for (int x = 0; x < 20; x++) {
 
 			for (int y = 0; y < 20; y++) {
-
-				field[x][y] = 'O';
+				//codes the initial board before the user inputs where they want cells  
+				field[x][y] = 'O'; // O is a dead cell
 				change[x][y] = false;
 			}
 		}
 		// variables
-		int row = 0;
-		int column = 0;
-		int neighbour = 0;
-		int generation = 1;
-		String ans = "yes";
-		int livecell = 0;
+		int row = 0; //for user input
+		int column = 0;//for user input
+		int neighbour = 0;//counter
+		int generation = 1;//counts number of generations
+		String ans = "yes";//for seeing the next generation
+		int livecell = 0; //the number of live cells after each generation so the program knows whether there will be another round
 
 		System.out.println("How many live cells would you like to start with?");
 		int startCells = sc.nextInt();
@@ -41,7 +42,7 @@ public class Life {
 		}
 
 		System.out.println("Please enter the x and y coordinate of where you want the cells to begin on the 20x20 grid");
-		
+
 		for (int s = 0; s < startCells; s++) {
 			System.out.println("Row coordinate #" + (s + 1));
 
@@ -52,6 +53,7 @@ public class Life {
 			field[row][column] = 'X';
 
 		}
+		//prints out first field with user input
 		for (int x = 0; x < 20; x++) {
 
 			for (int y = 0; y < 20; y++) {
@@ -60,73 +62,51 @@ public class Life {
 			}
 			System.out.println();
 		}
-		//loop for multiple generations
+		//loop for printing multiple generations
 		do{
 
 			//loop that checks neighbours
 			for (int x = 0; x < 20; x++) {
 
-				neighbour = 0;
+				neighbour = 0;//resets number of neighbours
 				for (int y = 0; y < 20; y++) {
-					neighbour = 0; 
-					if (field[x][y] == 'X') {
-						//cell is alive at start
+					neighbour = 0; //resets number of neighbours
 
-						// check one to the right of y
-						if (field[x].length > y + 1) {
-							if (field[x][y + 1] == 'X') {
-								neighbour++;
-							}
-						}
-						// check one to the left of y
-						if (field[x].length > y - 1 && y - 1 >= 0) {
-							if (field[x][y - 1] == 'X') {
-								neighbour++;
-							}
-						}
+					// check if there is a neighbour on top right
+					if (x > 0 && y < 19 && field[x-1][y+1] == 'X')
+						neighbour++;
 
-						// check one above y
-						if (field.length > x - 1 && x - 1 >= 0) {
-							if (field[x - 1][y] == 'X') {
-								neighbour++;
-							}
-						}
+					// check if there is a neighbour on top middle
+					if (x > 0 && field[x-1][y] == 'X')
+						neighbour++;
 
-						// check one below y
-						if (field.length > x + 1) {
-							if (field[x + 1][y] == 'X') {
-								neighbour++;
-							}
-						}
+					// check if there is a neighbour on top left
+					if (x > 0 && y > 0 && field[x-1][y-1] == 'X')
+						neighbour++;
 
-						// check one top left diagonal to y
-						if (field.length > x - 1 && field[x].length > y - 1 && x - 1 >= 0 && y - 1 >= 0) {
-							if (field[x - 1][y - 1] == 'X') {
-								neighbour++;
-							}
-						}
+					// check if there is a neighbour on right
+					if (y < 19 && field[x][y+1] == 'X')
+						neighbour++;
 
-						// check one top right diagonal to y
-						if (field.length > x - 1 && field[x].length > y + 1 && x - 1 >= 0) {
-							if (field[x - 1][y + 1] == 'X') {
-								neighbour++;
-							}
-						}
+					// check if there is a neighbour on left
+					if (y > 0 && field[x][y-1] == 'X')
+						neighbour++;
 
-						// check one bottom left diagonal to y
-						if (field.length > x + 1 && field[x].length > y - 1 && y - 1 >= 0) {
-							if (field[x + 1][y - 1] == 'X') {
-								neighbour++;
-							} 
-						}
+					// check if there is a neighbour on bottom right
+					if (x < 19 && y < 19 && field[x+1][y+1] == 'X')
+						neighbour++;
 
-						// check one bottom right diagonal to y
-						if (field.length > x + 1 && field[x].length > y + 1) {
-							if (field[x + 1][y + 1] == 'X') {
-								neighbour++;
-							}
-						}
-						//assigns true if the cell will stay alive
+					// check if there is a neighbour on bottom middle
+					if (x < 19 && field[x+1][y] == 'X')
+						neighbour++;
+
+					// check if there is a neighbour on bottom left
+					if (x < 19 && y > 0 && field[x+1][y-1] == 'X')
+						neighbour++;	
+
+						
+					//assigns true if the cell will stay alive
+					if(field[x][y]== 'X'){
 						if (neighbour == 2 || neighbour == 3) {
 							change[x][y] = true;
 						} 
@@ -135,62 +115,8 @@ public class Life {
 						}
 
 					}
-					else {
-						// cell is dead at start
-						// check one to the right of y
-						if (field[x].length > y + 1) {
-							if (field[x][y + 1] == 'X') {
-								neighbour++;
-							}
-						}
-						// check one to the left of y
-						if (field[x].length > y - 1 && y - 1 >= 0) {
-							if (field[x][y - 1] == 'X') {
-								neighbour++;
-							}
-						}
-
-						// check one above y
-						if (field.length > x - 1 && x - 1 >= 0) {
-							if (field[x - 1][y] == 'X') {
-								neighbour++;
-							}
-						}
-
-						// check one below y
-						if (field.length > x + 1) {
-							if (field[x + 1][y] == 'X') {
-								neighbour++;
-							}
-						}
-
-						// check one top left diagonal to y
-						if (field.length > x - 1 && field[x].length > y - 1 && x - 1 >= 0 && y - 1 >= 0) {
-							if (field[x - 1][y - 1] == 'X') {
-								neighbour++;
-							}
-						}
-
-						// check one top right diagonal to y
-						if (field.length > x - 1 && field[x].length > y + 1 && x - 1 >= 0) {
-							if (field[x - 1][y + 1] == 'X') {
-								neighbour++;
-							}
-						}
-
-						// check one bottom left diagonal to y
-						if (field.length > x + 1 && field[x].length > y - 1 && y - 1 >= 0) {
-							if (field[x + 1][y - 1] == 'X') {
-								neighbour++;
-							} 
-						}
-
-						// check one bottom right diagonal to y
-						if (field.length > x + 1 && field[x].length > y + 1) {
-							if (field[x + 1][y + 1] == 'X') {
-								neighbour++;
-							}
-						}
+					//assigns true if the cell comes to life
+					if(field[x][y]== 'O'){
 						if ( neighbour == 3) {
 							change[x][y] = true;
 						} 
@@ -203,7 +129,7 @@ public class Life {
 				}
 
 			}
-
+			//prints out next generation
 			System.out.println(" ");
 			System.out.println("Generation #" +generation);
 			System.out.println(" ");
@@ -232,15 +158,15 @@ public class Life {
 					}
 				}
 			}
-			if(livecell == 0){
+			if(livecell <3 ){//checks if under 3 because if only 2 cells left they wont have enough neighbours to survive the next generation
 				System.out.println("No more live cells");
+				System.out.print("Game of Life is over");
+				System.exit(0);
 			}
 			System.out.println("Would you like to see the next generation? (yes/no)");
 			ans = sc.next();
 			generation ++;
 		}while(ans.equalsIgnoreCase("yes"));
-		System.out.print("Program Over");
+		System.out.print("Game of Life is over");
 	}
 }
-
-
